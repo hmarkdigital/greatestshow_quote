@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Custom globals that were previously in index.html styles can move here if desired, 
+   but for now we keep them to minimize friction, or move them here for cleaner code.
+   Let's move the critical ones here to ensure they load properly with Tailwind.
+*/
+
+@layer base {
+    body {
+        @apply font-sans bg-[#050505] text-white;
+    }
+}
+
+/* Utilities that were inline */
+.neon-glow {
+    box-shadow: 0 0 20px rgba(0, 26, 255, 0.4);
+}
+
+.blue-gradient-text {
+    background: linear-gradient(90deg, #001aff 0%, #4c6ef5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

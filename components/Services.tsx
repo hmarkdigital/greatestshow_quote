@@ -15,7 +15,7 @@ const icons = {
 };
 
 export const Services: React.FC<ServicesProps> = ({ isGross, setIsGross }) => {
-  
+
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('hu-HU', { style: 'currency', currency: 'HUF', maximumFractionDigits: 0 }).format(amount);
   };
@@ -32,23 +32,23 @@ export const Services: React.FC<ServicesProps> = ({ isGross, setIsGross }) => {
           <PriceToggle isGross={isGross} setIsGross={setIsGross} />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center md:justify-items-stretch">
           {ONE_TIME_SERVICES.map((service) => {
             const Icon = icons[service.id as keyof typeof icons] || Globe;
             const price = isGross ? service.price.gross : service.price.net;
-            
+
             // Check for custom range display
-            const displayPrice = service.customPriceRange 
-                ? (isGross ? service.customPriceRange.gross : service.customPriceRange.net)
-                : formatPrice(price);
+            const displayPrice = service.customPriceRange
+              ? (isGross ? service.customPriceRange.gross : service.customPriceRange.net)
+              : formatPrice(price);
 
             return (
-              <div 
+              <div
                 key={service.id}
-                className="group relative bg-[#111] border border-white/5 rounded-2xl p-8 hover:border-[#001aff]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,26,255,0.1)] flex flex-col h-full"
+                className="group relative bg-[#111] border border-white/5 rounded-2xl p-8 hover:border-[#001aff]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,26,255,0.1)] flex flex-col h-full w-full max-w-md md:max-w-none"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#001aff] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                
+
                 <div className="w-14 h-14 rounded-xl bg-[#001aff]/20 flex items-center justify-center mb-6 text-[#001aff] group-hover:scale-110 transition-all">
                   <Icon size={28} />
                 </div>
@@ -57,10 +57,10 @@ export const Services: React.FC<ServicesProps> = ({ isGross, setIsGross }) => {
                   <span className="text-xs font-bold bg-white/5 px-2 py-1 rounded text-gray-400">{service.id}</span>
                   <span className="text-xs text-gray-500 uppercase tracking-wider">{service.category}</span>
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-white mb-1">{service.title}</h3>
                 {service.subtitle && <p className="text-sm text-[#001aff] mb-4">{service.subtitle}</p>}
-                
+
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                   {service.description}
                 </p>
